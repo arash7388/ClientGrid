@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Test.Models.Customer>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>List of Customers</h2>
+@using (Html.BeginForm("Save", "Home", FormMethod.Post,new {id="form1"}))
+{
+    <div id="tblList">
+        @Html.Partial("_Table", Model)
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel" id="panel1">
+                <div class="panel-heading">New</div>
+                <div class="panel-body">
+                    <input type="text" id="fname" name="FirstName" placeholder="FirstName ..." /> <br />
+                    <input type="text" id="lname" name="LastName" placeholder="Last ..." /><br />
+                    <input type="text" id="pno" name="PassportNo" placeholder="PassportNo ..." /><br />
+                    <input type="text" id="payrefno" name="PayRefNo" placeholder="PayRefNo ..." /><br />
+                    <input type="text" id="passportExpDate" name="PassportExpDate" placeholder="PassportExpDate ..." /><br />
+                    <input type="text" id="pcal1" class="pdate">
+                    <input type="button" id="addRow" value="Add Row" />
+                    <input type="submit" value="save" @*onclick="onSaveClicked(); return false;"*@ />
+                    <input type="button" value="Delete" onclick="onDeleteClicked(); return false;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        var objCal1 = new AMIB.persianCalendar('pcal1');
+
+        $(document).ready(function () {
+            t = $('#table1').DataTable();
+
+            var counter = 1;
+
+            $('#addRow').on('click', function () {
+                t.row.add([
+                    '2018/01/01',
+                    'aa',
+                    'bb',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '2019/02/02',
+                    '',
+                    '2020/05/05',
+                    '',
+                    ''
+                ]).draw(false);
+
+                counter++;
+            });
+
+            $('#table1 tbody').on( 'click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    t.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+        });
+
+        $('#form1').on('submit', function(e) {
+            debugger;
+            var form = this;
+            
+            e.preventDefault();
+
+            t.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+                d0 = this.data();
+            } );
+
+            console.log(t.rows().data());
+            //var d0 = t.rows(0).data();
+
+            var model = '{"Id" = '+d0[0]+','
+                +'"InsertDateTime" = "'+d0[1]+'",'
+                +'"BranchId" = 1,'
+                +'"FirstName" = "asdasd",'
+                +'"LastName" = "fgjdfg",'
+                +'"PassportExpDate" = "",'
+                +'"PassportNo" = "1233",'
+                +'"PayRefNo" = "2344",'
+                +'"VisaNo" = "432555"}';
+            
+
+            $.ajax({
+                url: '@Url.Action("Save","Home")',
+                type: "POST",
+                data: JSON.stringify(model),
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        alert('added');
+                        $("#table1").html(data.Data);
+                    }
+                },
+                error: function (data) {
+                    alert(data.Message);
+                }
+            });
+
+        });
+
+        function onDeleteClicked() {
+            t.row('.selected').remove().draw( false );
+        }
+
+        function onSaveClicked() {
+            $.ajax({
+                url: '@Url.Action("Save","Home")',
+                type: "POST",
+                data: JSON.stringify(t),
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.IsSuccess == true) {
+                        alert('added');
+                        $("#table1").html(data.Data);
+                    }
+                },
+                error: function (data) {
+                    alert(data.Message);
+                }
+            });
+        }
+    </script>
+}
+

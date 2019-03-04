@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGird", "..\ClientDataGrid\Test\ClientGird.csproj", "{2C02467B-8DA0-4B0E-86E4-18DE5E43A214}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientGrid", "ClientGird\ClientGrid.csproj", "{0646D82F-BB94-46E9-B405-80AC9129604D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C02467B-8DA0-4B0E-86E4-18DE5E43A214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C02467B-8DA0-4B0E-86E4-18DE5E43A214}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C02467B-8DA0-4B0E-86E4-18DE5E43A214}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C02467B-8DA0-4B0E-86E4-18DE5E43A214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0646D82F-BB94-46E9-B405-80AC9129604D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0646D82F-BB94-46E9-B405-80AC9129604D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0646D82F-BB94-46E9-B405-80AC9129604D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0646D82F-BB94-46E9-B405-80AC9129604D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

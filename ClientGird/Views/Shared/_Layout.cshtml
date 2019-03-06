@@ -44,10 +44,55 @@
 
 @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>*@
+    
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog delete-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title" id="confirmModalTitle">ConfirmModalTitle</h5>
+            </div>
+            <div class="modal-body">
+                <p id="confirmModalMessageContainer">ConfirmModalMessage</p>
+                <br />
+                <div class="text-center">
+                    <button id="modalAcceptBtn" type="button" class="btn btn-default " data-dismiss="modal">Ok</button>
+                    <button id="modalDeniedBtn" type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="~/Scripts/DataTables/datatables.min.js"></script>
 <link href="~/Content/DataTables/css/datatables.css" rel="stylesheet" />
 
     @RenderSection("scripts", required: false)
+
+<script>
+    function ConfirmMessage(message, onAccept, onDenied) {
+        $('#confirmModalMessageContainer').html(message);
+        $('#confirmModalTitle').html("Confirmation");
+
+        $("#confirmModal").modal("show");
+
+        $('#modalAcceptBtn').click(function () {
+            $("#confirmModal").modal("hide");
+            if (onAccept !== null && onAccept !== undefined)
+                onAccept();
+            else
+                console.log('ConfirmMessage|onAccept function is not defined!!! ....');
+        });
+
+        $('#modalDeniedBtn').click(function () {
+            $("#confirmModal").modal("hide");
+            if (onDenied !== null && onDenied !== undefined)
+                onDenied();
+            else
+                console.log('ConfirmMessage|onDenied function is not defined!!! ....');
+        });
+    }
+
+</script>
 </body>
 </html>

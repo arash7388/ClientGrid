@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Xml.Serialization;
 using Test.Models;
 using ActionResult = System.Web.Mvc.ActionResult;
 
@@ -32,7 +33,6 @@ namespace Test.Controllers
                 LastName = "fgjdfg",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
                 VisaNo = "432555"
 
             });
@@ -46,7 +46,7 @@ namespace Test.Controllers
                 LastName = "fgjdfg",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
 
             });
@@ -60,7 +60,7 @@ namespace Test.Controllers
                 LastName = "ccccccc",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
 
             });
@@ -74,7 +74,7 @@ namespace Test.Controllers
                 LastName = "dddddddd",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
 
@@ -87,7 +87,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
 
@@ -100,7 +100,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -112,7 +112,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -124,7 +124,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -136,7 +136,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -148,7 +148,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -160,7 +160,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -172,7 +172,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -184,7 +184,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -196,7 +196,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -208,7 +208,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -220,7 +220,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -232,7 +232,7 @@ namespace Test.Controllers
                 LastName = "xxxx",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
             customers.Add(new Customer()
@@ -244,7 +244,7 @@ namespace Test.Controllers
                 LastName = "eeeeeeeeee",
                 PassportExpDate = DateTime.Today,
                 PassportNo = "1233",
-                PayRefNo = "2344",
+                
                 VisaNo = "432555"
             });
 
@@ -285,8 +285,9 @@ namespace Test.Controllers
 
         [HttpPost]
         public JsonResult Save(List<Customer> model)
+        
         {
-            return null;
+            return Json(new {IsSuccess=true,Message="Ok"});
         }
     }
 

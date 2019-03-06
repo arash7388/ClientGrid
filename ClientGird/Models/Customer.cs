@@ -11,16 +11,10 @@ namespace Test.Models
         public string FirstName { get; set; }
         public string LastName  { get; set; }
         public string PassportNo  { get; set; }  //todo : type?
-        public string PayRefNo { get; set; } //todo: type?
 
         [DataType(DataType.Date)]
         public DateTime PassportExpDate { get; set; }
-        public string VisaNo { get; set; }
-        
-        [DataType(DataType.Date)]
-        public DateTime VisaExpDate { get; set; }
-        public bool IsDeleted { get; set; }
-
+        public bool Active { get; set; }
     }
 
     public class ClassTitle : Attribute

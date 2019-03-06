@@ -5,7 +5,7 @@
 }
 
 <h2>List of Customers</h2>
-@using (Html.BeginForm("Save", "Home", FormMethod.Post,new {id="form1"}))
+@using (Html.BeginForm("Save", "Home", FormMethod.Post, new { id = "form1" }))
 {
     <div id="tblList">
         @Html.Partial("_Table", Model)
@@ -14,21 +14,72 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="panel" id="panel1">
-                <div class="panel-heading">New</div>
+                <div class="panel-heading">Operations</div>
                 <div class="panel-body">
-                    <input type="text" id="fname" name="FirstName" placeholder="FirstName ..." /> <br />
-                    <input type="text" id="lname" name="LastName" placeholder="Last ..." /><br />
-                    <input type="text" id="pno" name="PassportNo" placeholder="PassportNo ..." /><br />
-                    <input type="text" id="payrefno" name="PayRefNo" placeholder="PayRefNo ..." /><br />
-                    <input type="text" id="passportExpDate" name="PassportExpDate" placeholder="PassportExpDate ..." /><br />
-                    <input type="text" id="pcal1" class="pdate">
-                    <input type="button" id="addRow" value="Add Row" />
-                    <input type="submit" value="save" @*onclick="onSaveClicked(); return false;"*@ />
-                    <input type="button" value="Delete" onclick="onDeleteClicked(); return false;" />
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal">Add</button>
+                    <input type="submit"  class="btn btn-default" value="save" @*onclick="onSaveClicked(); return false;"*@ />
+                    <input type="button" class="btn btn-default" value="Delete" onclick="onDeleteClicked(); return false;" />
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="addModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3>Add new customer</h3>
+                    </div>
+                    <div class="panel-body">
+                        @*<div class="modal-header">
+                        </div>*@
+
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="insertdt">InsertDateTime:</label>
+                                    <input type="date" class="form-control" id="insertdt" placeholder="" name="InsertDateTime">
+                                </div>
+                                <div class="form-group">
+                                    <label for="branchid">BranchId:</label>
+                                    <input type="number" class="form-control" id="branchid" placeholder="" name="branchid">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fname">FirstName:</label>
+                                    <input class="form-control" id="fname" placeholder="" name="fname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">FirstName:</label>
+                                    <input class="form-control" id="lastName" placeholder="" name="lastName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="passportNo">Passport Number:</label>
+                                    <input class="form-control" id="passportNo" placeholder="" name="passportNo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="passportExpDate">Passport Exp Date:</label>
+                                    <input type="date" class="form-control" id="passportExpDate" placeholder="" name="passportExpDate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="active">Active:</label>
+                                    <input type="checkbox" class="form-control" id="active" placeholder="" name="active">
+                                </div>
+                            </form>
+                            <hr />
+                            <div class="text-center">
+                                <button id="okBtn" type="button" class="btn btn-default " data-dismiss="modal" onclick="onAddClicked(); return false;">Ok</button>
+                                <button id="cancelBtn" type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 }
 @section scripts
 {
@@ -73,32 +124,40 @@
 
         $('#form1').on('submit', function(e) {
             debugger;
-            var form = this;
-            
+
             e.preventDefault();
 
-            t.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
-                d0 = this.data();
-            } );
+            //t.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+            //    d0 = this.data();
+            //} );
 
-            console.log(t.rows().data());
-            //var d0 = t.rows(0).data();
+            var allRows = t.rows().data();
+            var model = "[";
 
-            var model = '{"Id" = '+d0[0]+','
-                +'"InsertDateTime" = "'+d0[1]+'",'
-                +'"BranchId" = 1,'
-                +'"FirstName" = "asdasd",'
-                +'"LastName" = "fgjdfg",'
-                +'"PassportExpDate" = "",'
-                +'"PassportNo" = "1233",'
-                +'"PayRefNo" = "2344",'
-                +'"VisaNo" = "432555"}';
-            
+            jQuery.each(allRows, function( i, row ) {
+
+                if (model != "[")
+                    model = model + ",";
+
+                model = model +
+                    '{"InsertDateTime" : "' + row[0] +'",' +
+                    '"BranchId" : ' + row[1] +',' +
+                    '"FirstName" : "' + row[2] +'",' +
+                    '"LastName" : "' + row[3] +'",' +
+                    '"PassportNo" : "' + row[4] +'",' +
+                    '"PassportExpDate" : "' + row[5] +'",' +
+                    '"PayRefNo" : "' + row[6] +'",' +
+                    '"VisaExpDate" : "' + row[7] +'",' +
+                    '"IsDeleted" : "true"}';
+            });
+
+            model += "]";
 
             $.ajax({
                 url: '@Url.Action("Save","Home")',
                 type: "POST",
-                data: JSON.stringify(model),
+                //data: JSON.stringify(model),
+                data: model,
                 dataType: "json",
                 traditional: true,
                 contentType: "application/json; charset=utf-8",
@@ -109,6 +168,7 @@
                     }
                 },
                 error: function (data) {
+                    debugger;
                     alert(data.Message);
                 }
             });
@@ -119,25 +179,26 @@
             t.row('.selected').remove().draw( false );
         }
 
-        function onSaveClicked() {
-            $.ajax({
-                url: '@Url.Action("Save","Home")',
-                type: "POST",
-                data: JSON.stringify(t),
-                dataType: "json",
-                traditional: true,
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data.IsSuccess == true) {
-                        alert('added');
-                        $("#table1").html(data.Data);
-                    }
-                },
-                error: function (data) {
-                    alert(data.Message);
-                }
-            });
+        function onAddCliecked() {
+            t = $('#table1').DataTable();
+
+            t.row.add([
+                    '2018/01/01',
+                    'aa',
+                    'bb',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '2019/02/02',
+                    '',
+                    '2020/05/05',
+                    '',
+                    ''
+                ]).draw(false);
         }
+        
     </script>
 }
 

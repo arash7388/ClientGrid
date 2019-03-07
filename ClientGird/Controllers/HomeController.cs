@@ -21,234 +21,25 @@ namespace Test.Controllers
 
         public ActionResult List()
         {
-
-            //var repo = new CustomerRepository();
             var customers = new List<Customer>();
-            customers.Add(new Customer()
-            {
-                Id = 1,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "asdasd",
-                LastName = "fgjdfg",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                VisaNo = "432555"
+            
+            var rnd = new Random(1);
 
-            });
-
-            customers.Add(new Customer()
+            for (int i = 0; i < 15; i++)
             {
-                Id = 2,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "bbbbbbbbb",
-                LastName = "fgjdfg",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-
-            });
-
-            customers.Add(new Customer()
-            {
-                Id = 3,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "ccccccccccccc",
-                LastName = "ccccccc",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-
-            });
-
-            customers.Add(new Customer()
-            {
-                Id = 4,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "ddddddddddd",
-                LastName = "dddddddd",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-
-            customers.Add(new Customer()
-            {
-                Id = 5,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-
-            customers.Add(new Customer()
-            {
-                Id = 54,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 511,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 523,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 543,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 544,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 553,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 5111,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 587,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 539,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "eeeeeeeeee",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 52,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "zxczxc",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 517,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "uuu",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 5876,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "zzzzzzz",
-                LastName = "xxxx",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-            customers.Add(new Customer()
-            {
-                Id = 5546,
-                InsertDateTime = DateTime.Now,
-                BranchId = 1,
-                FirstName = "zzzzzzzzzz",
-                LastName = "eeeeeeeeee",
-                PassportExpDate = DateTime.Today,
-                PassportNo = "1233",
-                
-                VisaNo = "432555"
-            });
-
-            Session["GridData"] = customers;
+                customers.Add(new Customer()
+                {
+                    Id = i+1,
+                    InsertDateTime = DateTime.Now.AddDays(rnd.Next(10,50)),
+                    BranchId = rnd.Next(1000),
+                    FirstName = "Fname " + (i+1),
+                    LastName = "Lname " + (i+1),
+                    PassportExpDate = DateTime.Now.AddDays(rnd.Next(2000)),
+                    PassportNo = rnd.Next(1000).ToString()
+                }); 
+            }
+            
+            TempData["GridData"] = customers;
             return View(customers);
         }
 

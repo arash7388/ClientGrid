@@ -63,8 +63,8 @@
                                     <input type="date" class="form-control" id="passportExpDate" placeholder="" name="passportExpDate">
                                 </div>
                                 <div class="form-group">
-                                    <label for="activeCheckBox">Active:</label>
-                                    <input type="checkbox" class="form-control" id="activeCheckBox" placeholder="" name="activeCheckBox">
+                                    <label >Active:</label>
+                                    <input type="checkbox" class="" id="activeCheckBox" name="activeCheckBox" style="height: 30px; margin-top: 10px;">
                                 </div>
                             </form>
                             <hr />
@@ -170,7 +170,8 @@
             
             t = $('#table1').DataTable();
 
-            
+            var checkState = $("#activeCheckBox")[0].checked == true ? "checked=\"true\"" : "";
+
             t.row.add([
                 $("#insertdt").val(),
                 $("#branchid").val(),
@@ -178,7 +179,7 @@
                 $("#lName").val(),
                 $("#passportNo").val(),
                 $("#passportExpDate").val(),
-                //$("#activeCheckBox")[0].checked
+                "<input class=\"check-box\" disabled=\"disabled\" type=\"checkbox\"" + checkState +">"
                 ]).draw(false);
         }
         
